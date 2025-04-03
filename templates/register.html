@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Analizador CSV</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; }
+        input[type="text"], input[type="password"] {
+            width: 95%; /* Ancho ajustado */
+            padding: 8px;
+            margin-bottom: 5px; /* Espacio bajo el input */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .invalid-feedback { color: red; font-size: 0.9em; margin-top: -10px; margin-bottom: 10px; } /* Estilo errores */
+        input.is-invalid { border-color: red; } /* Borde rojo en error */
+        .btn { padding: 10px 15px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .btn:hover { background-color: #0056b3; }
+        /* Estilo para mensajes flash (opcional) */
+        .flash-message { padding: 10px; margin-bottom: 15px; border-radius: 4px; }
+        .flash-success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .flash-danger { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .flash-info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+    </style>
+</head>
+<body>
+    <h1>Registrar Nuevo Usuario</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="flash-message flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+
+    <form method="POST" action="">
+        {{ form.hidden_tag() }} <div class="form-group">
+            {{ form.username.label }}
+            {% if form.username.errors %}
+                {{ form.username(class="is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.username.errors %}
+                        <span>{{ error }}</span><br>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.username() }}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.password.label }}
+             {% if form.password.errors %}
+                {{ form.password(class="is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                        <span>{{ error }}</span><br>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.password() }}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.confirm_password.label }}
+             {% if form.confirm_password.errors %}
+                {{ form.confirm_password(class="is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.confirm_password.errors %}
+                        <span>{{ error }}</span><br>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.confirm_password() }}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.submit(class="btn") }}
+        </div>
+    </form>
+
+     <p>¿Ya tienes una cuenta? <a href="#">Inicia Sesión</a></p> <p><a href="{{ url_for('index') }}">Volver al inicio</a></p>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+# Entornos Virtuales
+venv/
+*.pyc
+__pycache__/
+
+# Bases de datos locales SQLite
+site.db
+
+# Archivos de IDE (VS Code, PyCharm, etc.)
+.vscode/
+.idea/
+
+# Archivos de instancia de Flask (si los usas)
+instance/
+
+# Archivos de sistema operativo (macOS, Windows)
+*.DS_Store
+Thumbs.db
