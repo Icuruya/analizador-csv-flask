@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
 # Importamos el modelo User para poder verificar si un usuario ya existe
 from models import User
 
@@ -32,3 +33,19 @@ class RegistrationForm(FlaskForm):
         if user:
             # Si user no es None, significa que ya existe, lanzamos un error de validación.
             raise ValidationError('Ese nombre de usuario ya está en uso. Por favor, elige otro.')
+
+
+class LoginForm(FlaskForm):
+    # Campo para el nombre de usuario (usaremos el mismo validador que en registro)
+    username = StringField('Nombre de Usuario',
+                           validators=[DataRequired(message="El nombre de usuario es obligatorio.")])
+
+    # Campo para la contraseña
+    password = PasswordField('Contraseña',
+                             validators=[DataRequired(message="La contraseña es obligatoria.")])
+
+    # Casilla para "Recuérdame"
+    remember = BooleanField('Recuérdame') # No necesita validadores obligatorios
+
+    # Botón de envío
+    submit = SubmitField('Iniciar Sesión')

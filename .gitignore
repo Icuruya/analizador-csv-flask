@@ -16,3 +16,8 @@ instance/
 # Archivos de sistema operativo (macOS, Windows)
 *.DS_Store
 Thumbs.db
+
+# Archivos subidos
+uploads/
+uploads/*
+!uploads/.gitkeep
