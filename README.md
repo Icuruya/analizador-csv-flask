@@ -49,7 +49,7 @@
 
 * **Clonar Repositorio:**
     ```bash
-    git clone [https://github.com/TU_USUARIO/analizador-csv-flask.git](https://github.com/TU_USUARIO/analizador-csv-flask.git) # Reemplaza con tu URL
+    git clone [https://github.com/TU_USUARIO/analizador-csv-flask.git](https://github.com/Icuruya/analizador-csv-flask.git)
     cd analizador-csv-flask
     ```
 * **Crear Entorno Virtual:**
